@@ -1,17 +1,23 @@
 import streamlit as st
 import requests
 
-
-param1 = st.slider('Select a number', 1, 10, 3)
-
-param2 = st.slider('Select another number', 1, 10, 3)
+st.title('Welcome to Hereditary Spherocytosis Detector App')
 
 url = 'http://localhost:8080/predict'
 
-params = {
-    'feature1': param1,  # 0 for Sunday, 1 for Monday, ...
-    'feature2': param2
-}
-response = requests.get(url, params=params)
+uploaded_file = st.file_uploader("Please upload a blood smear picture...",
+                    type=['png', 'jpeg', 'jpg'],
+                )
 
-st.text(response.json())
+if uploaded_file is not None:
+    st.image(uploaded_file)
+
+    response = requests.post(url, files={"uploaded_file": uploaded_file.getvalue()})
+    result = response.json()['prediction']
+
+    result_texts = {
+        0: "The blood smear picture doesn't show spherocytes, \npatient does not seem to have spherocytosis",
+        1: "The blood smear picture shows spherocytes, \npatient may have spherocytosis. \nPlease consult a doctor"
+    }
+
+    st.text(result_texts[int(result)])
