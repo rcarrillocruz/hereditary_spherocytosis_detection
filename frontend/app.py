@@ -3,7 +3,7 @@ import requests
 
 st.title('Welcome to Hereditary Spherocytosis Detector App')
 
-url = 'http://localhost:8080/predict'
+url = 'https://hs-detector-pyur4ofpea-ew.a.run.app/predict'
 
 uploaded_file = st.file_uploader("Please upload a blood smear picture...",
                     type=['png', 'jpeg', 'jpg'],
