@@ -18,7 +18,7 @@ RUN pip install -r requirements.txt
 # Here, we use uvicorn to control the web server ports
 
 # local
-CMD uvicorn api_folder.api_file:api --host 0.0.0.0
+# CMD uvicorn api_folder.api_file:api --host 0.0.0.0
 
 # deploy to gcp
-#CMD uvicorn api_folder.api_file:api --host 0.0.0.0 --port $PORT
+CMD uvicorn api_folder.api_file:api --host 0.0.0.0 --port $PORT
