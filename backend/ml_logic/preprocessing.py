@@ -1,12 +1,16 @@
-# Imports
 import numpy as np
 import tensorflow as tf
+import os
+import matplotlib.pyplot as plt
 
 
 def preprocessing():
 
+    parent_path = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+    data_path = os.path.join(parent_path, 'raw_data', 'data')
+
     # load data from labelled folders "positive" and "negative"
-    data = tf.keras.utils.image_dataset_from_directory('raw_data/data',
+    data = tf.keras.utils.image_dataset_from_directory(data_path,
                                                        batch_size=32, # we can change this
                                                        image_size=(768, 1024), # keep the ratio of both datasets, but size to recommended size for MaskRCNN
                                                        color_mode='grayscale',
@@ -26,3 +30,5 @@ def preprocessing():
     train = data_scaled.take(train_size)
     val = data_scaled.skip(train_size).take(val_size)
     test = data_scaled.skip(train_size+val_size).take(test_size)
+
+    return train, val, test

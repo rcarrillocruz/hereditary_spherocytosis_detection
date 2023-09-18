@@ -8,11 +8,11 @@ def categorise_chula_rbc12():
     This function iterates over each file and then over each line until it finds a spherocyte label (3).
     If spherocyte is found, it copies the equivalent .jpg to the "positive" folder. Otherwise, it copies it to the "negative" folder
     '''
-
-    label_path = '/content/drive/My Drive/raw_data/Chula-RBC-12-Dataset-main/Label'
-    data_path = '/content/drive/My Drive/raw_data/Chula-RBC-12-Dataset-main/Dataset'
-    positive_folder = '/content/drive/My Drive/raw_data/data/positive'
-    negative_folder = '/content/drive/My Drive/raw_data/data/negative'
+    parent_path = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+    label_path = os.path.join(parent_path, 'raw_data', 'Chula-RBC-12-Dataset-main', 'Label')
+    data_path = os.path.join(parent_path, 'raw_data', 'Chula-RBC-12-Dataset-main', 'Dataset')
+    positive_folder = os.path.join(parent_path, 'raw_data', 'data', 'positive')
+    negative_folder = os.path.join(parent_path, 'raw_data', 'data', 'negative')
 
     try:
         # Iterate over all the files in the data_path
@@ -56,8 +56,10 @@ def categorise_dataset_a():
     All blood smear images will be mixed (not divided per patient).
     All jpgs are copied into the "positive" folder
     '''
-    data_path = '/content/drive/My Drive/raw_data/Dataset A 186 digital images of MGG-stained blood smears from five patients with hereditary spherocytosis'
-    positive_folder = '/content/drive/My Drive/raw_data/data/positive'
+
+    parent_path = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+    data_path = os.path.join(parent_path, 'raw_data', 'Dataset A')
+    positive_folder = os.path.join(parent_path, 'raw_data', 'data', 'positive')
 
     try:
         # Iterate over all the patient folders in the directory
