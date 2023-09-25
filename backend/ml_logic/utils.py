@@ -29,25 +29,27 @@ def chula_annotations(s=70):
                 with open(os.path.join(label_folder, txt_file), 'r') as txt_file:
                     annotation_id = 1
                     for line in txt_file:
-                        a, b, category = map(int, line.strip().split())
+                        a, b, category = map(int, line.strip().split()) # a and b are the x and y coordinates of the center of the annotation / bbox
                         s = s # arbitrary size (width and height) I picked to try to make sure all rbcs are inside the general bboxes
-                        x = a - (s/2)
-                        y = b -(s/2)
+                        x_min = a - (s/2)
+                        x_max = a + (s/2)
+                        y_min = b - (s/2)
+                        y_max = b + (s/2)
                         annotation = {
                             "id": annotation_id,
                             "image_id": image_id,
                             "category_id": category,
-                            "bbox": [x, y , s, s], # bbox that should account for most rbc's, subject to modification
+                            "bbox": [x_min, y_min , s, s], # bbox that should account for most rbc's, subject to modification
                             "area": s*s,  # area calculation was based on the "Understanding COCO Dataset" website explanation
-                            "segmentation": [x - (s/2),
-                                            y - (s/2),
-                                            x - (s/2),
-                                            y - (s/2) + y + (s/2),
-                                            x - (s/2) + x + (s/2),
-                                            y - (s/2) + y + (s/2),
-                                            x - (s/2) + x + (s/2),
-                                            y + (s/2)
-                                            ], #segmentation calculation was based on the "Understanding COCO Dataset" website explanation
+                            "segmentation": [x_min,
+                                             y_min,
+                                             x_min,
+                                             y_min + y_max,
+                                             x_min + x_max,
+                                             y_min + y_max,
+                                             x_min + x_max,
+                                             y_max
+                                             ], # segmentation calculation was based on the "Understanding COCO Dataset" website explanation
                             "iscrowd": 0  # 0 for individual annotations
                         }
                         annotations.append(annotation)
