@@ -1,23 +1,22 @@
 import streamlit as st
 import requests
+import numpy as np
+from PIL import Image
 
 st.title('Welcome to Hereditary Spherocytosis Detector App')
 
-url = 'https://hs-detector-pyur4ofpea-ew.a.run.app/predict'
+url = 'https://hs-detector-pyur4ofpea-ew.a.run.app/v1/models/hs-retinanet:predict'
 
 uploaded_file = st.file_uploader("Please upload a blood smear picture...",
                     type=['png', 'jpeg', 'jpg'],
                 )
 
 if uploaded_file is not None:
-    st.image(uploaded_file)
+    image = Image.open(uploaded_file)
+    image_np = np.array(image)
+    payload = {"instances": [image_np.tolist()]}
 
-    response = requests.post(url, files={"uploaded_file": uploaded_file.getvalue()})
-    result = response.json()['prediction']
+    result=requests.post(url, json=payload)
+    result = result.json()
 
-    result_texts = {
-        0: "The blood smear picture doesn't show spherocytes, \npatient does not seem to have spherocytosis",
-        1: "The blood smear picture shows spherocytes, \npatient may have spherocytosis. \nPlease consult a doctor"
-    }
-
-    st.text(result_texts[int(result)])
+    st.write(result)

@@ -1,24 +1,11 @@
-# Instead of creating an image from scratch, we use this image which has python installed.
-FROM python:3.9
+FROM tensorflow/serving:latest
 
+RUN mkdir -p /models/hs-retinanet/1
 
-# COPY allows you to select the folders and files to include in your docker image
-# Here, we will include our api_folder and the requiremenets.txt file
-COPY api_folder /api_folder
-COPY requirements.txt /requirements.txt
+COPY notebooks/exported_model /models/hs-retinanet/1
 
-# RUN allows you to run terminal commands when your image gets created
-# Here, we upgrade pip and install the libraries in our requirements.txt
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+ENV MODEL_NAME=hs-retinanet
+ENV TF_CPP_MIN_VLOG_LEVEL=4
+ENV TF_CPP_VMODULE=http_server=1
 
-
-
-# CMD controls the functionality of the container
-# Here, we use uvicorn to control the web server ports
-
-# local
-# CMD uvicorn api_folder.api_file:api --host 0.0.0.0
-
-# deploy to gcp
-CMD uvicorn api_folder.api_file:api --host 0.0.0.0 --port $PORT
+ENTRYPOINT tensorflow_model_server --port=8500 --rest_api_port=${PORT:-8051} --model_name=${MODEL_NAME} --model_base_path=${MODEL_BASE_PATH}/${MODEL_NAME}
