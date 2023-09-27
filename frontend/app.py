@@ -36,10 +36,6 @@ if uploaded_file is not None:
             prediction = model.predict(f.name)
             st.set_option('deprecation.showPyplotGlobalUse', False)
             st.pyplot(prediction.plot())
-            #prediction.save('prediction.jpg')
-            #st.image('prediction.jpg')
+            st.caption("Bounding boxes: Purple=Platelet  Yellow=RBC  Red=Spherocyte  Cyan=WBC")
             with st.expander("See prediction:"):
                 st.write(prediction.json())
-
-        # visualize your prediction
-       # model.predict("your_image.jpg", confidence=40, overlap=30).save("prediction.jpg")
