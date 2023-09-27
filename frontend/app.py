@@ -37,5 +37,15 @@ if uploaded_file is not None:
             st.set_option('deprecation.showPyplotGlobalUse', False)
             st.pyplot(prediction.plot())
             st.caption("Bounding boxes: Purple=Platelet  Yellow=RBC  Red=Spherocyte  Cyan=WBC")
-            with st.expander("See prediction:"):
+
+            spherocytes = 0
+            for p in prediction.json()['predictions']:
+                if p['class'] == 'Spherocyte':
+                    spherocytes += 1
+            if spherocytes > 0:
+                st.write("The model has detected {} spherocytes in the image. It is possible the patient has Hereditary Spherocytosis, please consult a doctor".format(spherocytes))
+            else:
+                st.write("The model has not detected spherocytes in the image. It is unlikely the patient has Hereditary Spherocytosis")
+
+            with st.expander("See prediction result:"):
                 st.write(prediction.json())
