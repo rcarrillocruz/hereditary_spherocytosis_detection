@@ -1,2 +1,8 @@
 raw_data/
 .DS_Store
+backend/notebooks/hs_coco_tfrecords
+backend/notebooks/hs.v1.coco
+backend/notebooks/exported_model
+backend/notebooks/models
+backend/notebooks/trained_model
+frontend/__pycache__
