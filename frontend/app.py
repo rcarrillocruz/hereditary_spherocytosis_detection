@@ -93,12 +93,24 @@ with tab2:
     col1, col2, col3, col4, col5 = st.columns(5)
 
     st.markdown("""
-    <style>
-        .css-1v0mbdj > img{
-        border-radius: 50%;
-        }
-    </style>
-    """, unsafe_allow_html=True)
+        <style>
+            div.css-j5r0tf:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > img:nth-child(1) {
+                    border-radius: 50%;
+            }
+            div.css-j5r0tf:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > img:nth-child(1) {
+                    border-radius: 50%;
+            }
+            div.css-j5r0tf:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > img:nth-child(1) {
+                    border-radius: 50%;
+            }
+            div.css-j5r0tf:nth-child(4) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > img:nth-child(1) {
+                    border-radius: 50%;
+            }
+            div.css-j5r0tf:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > img:nth-child(1) {
+                    border-radius: 50%;
+            }
+        </style>
+        """, unsafe_allow_html=True)
 
     with col1:
         st.image(claudia_path)
