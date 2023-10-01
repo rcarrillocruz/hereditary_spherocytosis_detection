@@ -85,8 +85,14 @@ with tab1:
 with tab2:
     st.title("About HS Detector")
     st.markdown("""
-    Sample Text
-    """)
+    <div style="text-align: justify;">
+    <b>HS Detector Web App is a tool developed for early detection of Hereditary Spherocytosis (HS) online</b> : you only need to upload a blood smear image of a patient on our web app and, through the use of deep learning (DL) techniques and convolutional neural networks (CNN), you will receive information regarding the chances the patient may or may not have hereditary spherocytosis by checking the presence of spherocytes.
+    <br></br>
+    Both patients and physicians can use HS Detector!
+    <br></br>
+    <b>DISCLAIMER: HS Detector Web App is not meant to replace diagnosis or confirmation tests of HS. Please consult a medical professional / doctor for further testing and treatment.</b>
+    </div>
+    """, unsafe_allow_html=True)
 
     st.header("The Team")
 
@@ -113,23 +119,23 @@ with tab2:
         """, unsafe_allow_html=True)
 
     with col1:
-        st.image(claudia_path)
+        st.image(claudia_path, use_column_width=True)
         st.markdown("<p style='text-align:center;'><a href='https://www.linkedin.com/in/claudia-beltran-a4343740/'>Claudia Beltrán Bocanegra</a></p>", unsafe_allow_html=True)
 
     with col2:
-        st.image(alvaro_path)
+        st.image(alvaro_path, use_column_width=True)
         st.markdown("<p style='text-align:center;'><a href='https://www.linkedin.com/in/alvaro-carranza/'>Alvaro Carranza</a></p>", unsafe_allow_html=True)
 
     with col3:
-        st.image(ricardo_path)
+        st.image(ricardo_path, use_column_width=True)
         st.markdown("<p style='text-align:center;'><a href='https://www.linkedin.com/in/ricardo-carrillo-cruz-6b78997/'>Ricardo Carrillo Cruz</a></p>", unsafe_allow_html=True)
 
     with col4:
-        st.image(mourad_path)
+        st.image(mourad_path, use_column_width=True)
         st.markdown("<p style='text-align:center;'><a href='https://www.linkedin.com/in/mouradelmoufid/'>Mourad El Moufid</a></p>", unsafe_allow_html=True)
 
     with col5:
-        st.image(afonso_path)
+        st.image(afonso_path, use_column_width=True)
         st.markdown("<p style='text-align:center;'><a href='https://www.linkedin.com/in/afonso-vaz-pinheiro-294799130/'>Afonso Pinheiro</a></p>", unsafe_allow_html=True)
 
     st.header("Acknowledgments")
