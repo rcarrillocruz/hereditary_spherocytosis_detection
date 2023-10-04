@@ -1,20 +1,17 @@
 
-# Hereditary Spherocytosis - HS Detect Web App
+# Hereditary Spherocytosis - HS Detector Web App
 AI-Powered medical tool for early detection of Hereditary Spherocytosis and other conditions causing similar symptoms.
 
 # Table of Contents
 
 1. [What is Hereditary Spherocytosis (HS)?](#id-section1)
-2. [What does HS Detect Web App do?](#id-section2)
+2. [What does HS Detector Web App do?](#id-section2)
 3. [Behind the Scenes: A Deep Learning approach for Segmentation of Red Blood Cell Images and HS Detection](#id-section3)
 4. [Getting Started](#id-section4)
 5. [Streamlit Cloud](#id-section5)
 6. [Help us improve the project](#id-section6)
 7. [Authors](#id-section7)
-8. [Version history](#id-section8)
-9. [License](#id-section9)
-10. [Acknowledgments](#id-section10)
-
+8. [Acknowledgments](#id-section8)
 
 <div id='id-section1'/>
 
@@ -30,7 +27,7 @@ Symptoms may range from mild to severe. Treatments can help with symptoms.
 
 <div id='id-section2'/>
 
-## What does HS Detect Web App do? 🚀🚀
+## What does HS Detector Web App do? 🚀🚀
 
 [Wikidoc](https://www.wikidoc.org/index.php/Hereditary_spherocytosis_laboratory_findings) indicates that "The initial laboratory testing for hereditary spherocytosis include; [complete blood count (CBC)](https://www.wikidoc.org/index.php/Complete_blood_count "Complete blood count"), [mean corpuscular hemoglobin concentration (MCHC)](https://www.wikidoc.org/index.php/Mean_corpuscular_hemoglobin_concentration "Mean corpuscular hemoglobin concentration"), [blood smear review](https://www.wikidoc.org/index.php/Blood_film "Blood film"), [hemolysis](https://www.wikidoc.org/index.php/Hemolysis "Hemolysis") [testing](https://www.wikidoc.org/index.php/Test "Test") and [coombs testing](https://www.wikidoc.org/index.php/Coombs_test "Coombs test")".
 
@@ -38,11 +35,11 @@ A blood smear is a slide made from a drop of blood, that allows the cells to be 
 
 While usually this review is done by pathologists (by identifying different characteristics of RBCs as shown on the image above), this is a time-consuming procedure, dependent on his skills.
 
-**HS Detect Web App is a tool developed for early detection of HS online** : you only need to upload a blood smear image of a patient on our web app and, through the use of deep learning (DL) techniques and convolutional neural networks (CNN), you will receive information regarding the chances the patient may or may not have hereditary spherocytosis by checking the presence of spherocytes.
+**HS Detector Web App is a tool developed for early detection of HS online** : you only need to upload a blood smear image of a patient on our web app and, through the use of deep learning (DL) techniques and convolutional neural networks (CNN), you will receive information regarding the chances the patient may or may not have hereditary spherocytosis by checking the presence of spherocytes.
 
-Both patients and physicians can use HS Detect!
+Both patients and physicians can use HS Detector!
 
-**DISCLAIMER: HS Detect Web App is not meant to replace diagnosis or confirmation tests of HS. Please consult a medical professional / doctor for further testing and treatment.**
+**DISCLAIMER: HS Detector Web App is not meant to replace diagnosis or confirmation tests of HS. Please consult a medical professional / doctor for further testing and treatment.**
 
 <div id='id-section3'/>
 
@@ -56,16 +53,12 @@ Both patients and physicians can use HS Detect!
 ### Bibliography :
 
 * Delgado-Ortet M, Molina A, Alférez S, Rodellar J, Merino A. A Deep Learning Approach for Segmentation of Red Blood Cell Images and Malaria Detection. Entropy (Basel). 2020 Jun 13;22(6):657. doi: 10.3390/e22060657. PMID: 33286429; PMCID: PMC7517192. ([link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7517192/))
-* Korranat Naruenatthanaset, Thanarat H. Chalidabhongse, Duangdao Palasuwan, Nantheera Anantrasirichai, Attakorn Palasuwan. Red Blood Cell Segmentation with Overlapping Cell Separation and Classification on Imbalanced Dataset. 2023. [arXiv:2012.01321](https://arxiv.org/abs/2012.01321). [https://doi.org/10.48550/arXiv.2012.01321](https://doi.org/10.48550/arXiv.2012.01321). ([link](https://arxiv.org/abs/2012.01321))
-* **TBC**
+* Naruenatthanaset K., Chalidabhongse T. H., Palasuwan D., Anantrasirichai N., Palasuwan A.. Red Blood Cell Segmentation with Overlapping Cell Separation and Classification on Imbalanced Dataset. 2023. [arXiv:2012.01321](https://arxiv.org/abs/2012.01321). [https://doi.org/10.48550/arXiv.2012.01321](https://doi.org/10.48550/arXiv.2012.01321). ([link](https://arxiv.org/abs/2012.01321))
+* Sadafi A., Bordukova M., Makhro A., Navab N., Bogdanova A., Marr C. RedTell: an AI tool for interpretable analysis of red blood cell morphology.  Frontiers in Physiology Vol 14 (2023). DOI=10.3389/fphys.2023.1058720. ISSN=1664-042X ([link](https://www.frontiersin.org/articles/10.3389/fphys.2023.1058720))
 
 ### The Model :
 
-**The Convolutional Neural Network (CNN) architecture behind HS Detect has been developed for Image Segmentation**, in order to detect RBCs and classify them (assigning a class label to each segment).
-
-One of the main inspirations for the model is the work of Maria Delgado-Ortet, Angel Molina, Santiago Alférez, José Rodellar, and Anna Merino (2020), who developed a three-stage pipeline to (1) segment erythrocytes, (2) crop and mask them, and (3) classify them into malaria infected or not.
-
-One of the datasets used during the training (Dataset A) was in fact also collected by this research team at the Hospital Clínic of Barcelona.
+**The model used for the project (through Roboflow) was Meta AI’s Segment Anything Model (SAM)**, an efficient and promptable model for image segmentation. You can find more information about it on the following [link](https://blog.roboflow.com/how-to-use-segment-anything-model-sam/).
 
 <div id='id-section4'/>
 
@@ -73,35 +66,23 @@ One of the datasets used during the training (Dataset A) was in fact also collec
 
 ### Dependencies
 ```
-tensorflow
-scikit-learn
-numpy
+streamlit
 pandas
-matplotlib
-seaborn
-scikit-learn
+numpy
+requests
+roboflow
 ```
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
-* Install all streamlit requirements by run the following command
+* Install all streamlit requirements by run the following command while on the frontend folder.
 
 ```
 pip install requirements.txt
 ```
 
-### Executing program
-
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
-
 ### Run Streamlit
 
-To access and use the application, donwoload or clone the repository and then run the command below.
+To access and use the application, download or clone the repository and then run the command below.
 ```
 streamlit run app.py
 ```
@@ -113,7 +94,7 @@ Finally browse the link provided in your browser.
 ## Streamlit Cloud 💻
 
 The application wiil be deployed in Streamlit Cloud.
-You can access here: *not available right now*
+You can access the app [here](https://hs-detector.streamlit.app/).
 
 <div id='id-section6'/>
 
@@ -134,7 +115,7 @@ If you find this repo useful , give it a star so as many people can get to know 
 
 ## Authors 👨‍💻👩‍💻
 
-This Web App is going to be launched in October 2023 as a final project for [Le Wagon](https://www.lewagon.com/)'s Data Science Bootcamp (Batch #1275).
+This Web App was launched in October 2023 as a final project for [Le Wagon](https://www.lewagon.com/)'s Data Science Bootcamp (Batch #1275).
 
 Project Leader : [Ricardo Carrillo Cruz](https://github.com/rcarrillocruz)
 
@@ -146,23 +127,8 @@ Team Members :
 
 <div id='id-section8'/>
 
-## Version History 📑
-
-* 0.2
-    * *TBC*
-    * See [commit change]() or See [release history]()
-* 0.1
-    * *TBC*
-
-<div id='id-section9'/>
-
-## License 📖
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-
-<div id='id-section10'/>
-
 ## Acknowledgments 🏅🏅
 
-Inspiration, code snippets, etc.
-* [TBC](TBC)
+We thank Ricardo’s family who inspired him to reflect on his experience with HS and how he could use his work to improve the diagnosis for others. We thank LeWagon’s community and instructors for giving us the tools to develop these ideas. We thank Ido Azaria for his invaluable mentorship. We thank Ben Auzanneau for his commitment to the program and this project. Team, special acknowledgement to all of you for all the hard work.
+
+One of the main inspirations for the model is the work of Maria Delgado-Ortet, Angel Molina, Santiago Alférez, José Rodellar, and Anna Merino (2020), who developed a three-stage pipeline to (1) segment erythrocytes, (2) crop and mask them, and (3) classify them into malaria-infected or not. One of the datasets used during the training (Dataset A) was in fact also collected by this research team at the Hospital Clínic of Barcelona.
