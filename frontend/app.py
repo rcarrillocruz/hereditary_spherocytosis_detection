@@ -12,7 +12,7 @@ custom_height = 200
 
 ricardo_path = "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1682162684/g9y5h3tijuolveoqi9cs.jpg"
 claudia_path = "https://avatars.githubusercontent.com/u/19194859?v=4"
-afonso_path = "https://avatars.githubusercontent.com/u/131270232?v=4"
+afonso_path = "https://media.licdn.com/dms/image/C4D03AQHFoTNrs6zvDQ/profile-displayphoto-shrink_800_800/0/1516951814538?e=1701907200&v=beta&t=HZFhy2Wm8NsjGUBs5l5lRTZzbtroNzDPyJm5uNPyrQQ"
 mourad_path = "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1683049623/v6ip6iigzl2mntfeykms.jpg"
 alvaro_path = "https://yt3.googleusercontent.com/paZVe7N1ObfG9XyrwKV4TyROhvHM0whWNU8xiVheQEspQR8mMoJ6rnzR3QL3xEgsRBoJ6hQ29w=s176-c-k-c0x00ffffff-no-rj"
 
@@ -98,26 +98,6 @@ with tab2:
 
     col1, col2, col3, col4, col5 = st.columns(5)
 
-    st.markdown("""
-        <style>
-            div.css-j5r0tf:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > img:nth-child(1) {
-                    border-radius: 50%;
-            }
-            div.css-j5r0tf:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > img:nth-child(1) {
-                    border-radius: 50%;
-            }
-            div.css-j5r0tf:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > img:nth-child(1) {
-                    border-radius: 50%;
-            }
-            div.css-j5r0tf:nth-child(4) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > img:nth-child(1) {
-                    border-radius: 50%;
-            }
-            div.css-j5r0tf:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > img:nth-child(1) {
-                    border-radius: 50%;
-            }
-        </style>
-        """, unsafe_allow_html=True)
-
     with col1:
         st.image(claudia_path, use_column_width=True)
         st.markdown("<p style='text-align:center;'><a href='https://www.linkedin.com/in/claudia-beltran-a4343740/'>Claudia Beltrán Bocanegra</a></p>", unsafe_allow_html=True)
@@ -140,8 +120,17 @@ with tab2:
 
     st.header("Acknowledgments")
     st.markdown("""
-    Sample Text
-    """)
+    <div style="text-align: justify;">
+    We thank Ricardo’s family who inspired him to reflect on his experience with HS and how he could use his work to improve the diagnosis for others.
+    We thank LeWagon’s community and instructors for giving us the tools to develop these ideas.
+    We thank Ido Azaria for his invaluable mentorship.
+    We thank Ben Auzanneau for his commitment to the program and this project.
+    Team, special acknowledgement to all of you for all the hard work.
+    <br></br>
+    One of the main inspirations for the project is the work of Maria Delgado-Ortet, Angel Molina, Santiago Alférez, José Rodellar, and Anna Merino (2020), who developed a three-stage pipeline to (1) segment erythrocytes, (2) crop and mask them, and (3) classify them into malaria-infected or not.
+    One of the datasets used during the training (Dataset A) was in fact also collected by this research team at the Hospital Clínic of Barcelona.
+    </div>
+    """, unsafe_allow_html=True)
 
 
 st.divider()
